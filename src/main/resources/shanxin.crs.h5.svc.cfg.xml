@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+
+	<util:map id="oprtSvc" map-class="java.util.HashMap">
+		<entry key="url" value="http://localhost:8080/shanxin-oprt-rest/rest/api" />
+	</util:map>
+
+	<util:map id="mebSvc" map-class="java.util.HashMap">
+		<entry key="url" value="http://localhost:8080/shanxin-meb-rest/rest/api" />
+	</util:map>
+</beans>
