@@ -1,0 +1,64 @@
+<#include "/fr/fr1_head.fm"/>
+<style>
+table {
+	border-collapse: collapse;
+}
+
+table#detail td, table#detail td table td {
+	border: solid 1px #acacac;
+	padding: 1px 6px;
+}
+</style>
+<table id="detail" style="margin: 10px;	border-bottom: solid 1px #acacac;">
+	<thead style="background-color: #eaeaea;">
+		<tr>
+			<td rowspan="2">编号</td>
+			<td rowspan="2">善存号</td>
+			<td rowspan="2">昵称</td>
+			<td rowspan="2">创建日期</td>
+			<td rowspan="2">备注</td>
+			<td colspan="3" style="text-align: center;">佛员属性</td>
+		</tr>
+		<tr>
+			<td>编号</td>
+			<td>类型</td>
+			<td>值</td>
+		</tr>
+	</thead>
+	<tbody>
+		<#list mebs as meb>
+		<tr>
+			<td rowspan="<#if meb.mebProperties?size != 0>${meb.mebProperties?size}<#else>1</#if>"><#if meb.mebId??>${meb.mebId}</#if></td>
+			<td rowspan="<#if meb.mebProperties?size != 0>${meb.mebProperties?size}<#else>1</#if>"><#if meb.name??>${meb.name}</#if></td>
+			<td rowspan="<#if meb.mebProperties?size != 0>${meb.mebProperties?size}<#else>1</#if>"><#if meb.nickName??>${meb.nickName}</#if></td>
+			<td rowspan="<#if meb.mebProperties?size != 0>${meb.mebProperties?size}<#else>1</#if>"><#if meb.createTime??>${meb.createTime?string('yyyy-MM-dd')}</#if></td>
+			<td rowspan="<#if meb.mebProperties?size != 0>${meb.mebProperties?size}<#else>1</#if>"><#if meb.remark??>${meb.remark}</#if></td> 
+			<#if meb.mebProperties?size == 1>
+				<#list meb.mebProperties as mebProperty>
+						<td>${mebProperty.propertyId}</td>
+						<td>${mebProperty.propertyTypeName}</td>
+						<td>${mebProperty.propertyValue}</td>
+  				</#list>
+ 			<#elseif meb.mebProperties?size gt 1>
+				<#list meb.mebProperties as mebProperty>
+					<#if mebProperty_index gt 0>
+						</tr><tr>
+						<td>${mebProperty.propertyId}</td>
+						<td>${mebProperty.propertyTypeName}</td>
+						<td>${mebProperty.propertyValue}</td>
+					<#else>
+						<td>${mebProperty.propertyId}</td>
+						<td>${mebProperty.propertyTypeName}</td>
+						<td>${mebProperty.propertyValue}</td>
+					</#if>
+  				</#list>
+  			<#else>
+			<td></td>
+			<td></td>
+			<td></td>
+			</#if>
+		</tr>
+		</#list>
+	</tbody>
+</table>
+<#include "/fr/fr1_tail.fm"/>
